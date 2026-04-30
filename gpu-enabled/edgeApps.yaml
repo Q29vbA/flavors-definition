@@ -5,11 +5,14 @@ edgeApps:
     targetRevision: "6.7.0"
     namespace: podinfo-primary
     helm:
-      parameters:
-        - name: "ingress.enabled"
-          value: "true"
-        - name: "ingress.hosts"
-          value: ""
+      values: |
+        ingress:
+          enabled: true
+          hosts:
+            - host: ""
+              paths:
+              - path: /
+                pathType: ImplementationSpecific
   - name: edge-podinfo-secondary
     repoURL: https://stefanprodan.github.io/podinfo
     chart: podinfo
