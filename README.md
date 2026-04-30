@@ -1,36 +1,26 @@
 # flavors-definition
 
-The "what and where" repository. Defines flavors, the clusters that belong to each flavor, and the applications deployed to each.
+This is a demo repo, lightweight copy of our internal-network project.
+Refer to our [medium post explaining the original project](https://medium.com/@yoavshamia/managing-diverse-large-scale-k8s-clusters-with-a-flavor-based-approach-150934dfb1f3 )
 
-## Directory structure
+this repo is the "what" and "where".
+it says which apps belong to each flavor, and which clusters are in each env.
 
-```
-flavors-definition/
-├── <flavor>/
-│   ├── hubApps.yaml        # Hub-side apps (ca-bundle + hive). Consumed by the hive Helm chart.
-│   ├── edgeApps.yaml       # Edge-side apps. Consumed by the hive Helm chart.
-│   ├── <env>/
-│   │   └── <clustername>.yaml   # Registers a cluster; holds per-cluster value overrides.
-```
+the structure is simple on purpose:
 
-### Example
-
-```
-gpu-enabled/
-├── hubApps.yaml
-├── edgeApps.yaml
-├── prod/
-│   ├── gpu-cluster-1.yaml
-│   └── gpu-cluster-2.yaml
-└── dev/
-    └── gpu-cluster-dev.yaml
+```text
+<flavor>/
+    hubApps.yaml
+    edgeApps.yaml
+    <env>/<clustername>.yaml
 ```
 
-## Bootstrap
+`hubApps.yaml` is the hub-side list. right now it has two entries only: `ca-bundle` and `hive`.
 
-Apply the root flavorset Application from the machine repo once to seed ArgoCD. After that, all ApplicationSets self-manage:
+`edgeApps.yaml` is the edge workload list that `hive` consumes.
 
-```bash
-# From the flavors-machine repo root:
-helm template flavorset ./flavorset --values ./flavorset/values.yaml | kubectl apply -n argocd -f -
-```
+`<clustername>.yaml` is for per-cluster overrides, usually `clusterServer`.
+
+## bootstrap reminder
+
+bootstrap from the machine repo

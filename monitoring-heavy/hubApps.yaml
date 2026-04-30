@@ -1,5 +1,8 @@
+# Hub-side apps managed by central Argo CD for this flavor.
+# `hive` is expanded later into edge bootstrap plus edge workload apps.
 hubApps:
   - name: ca-bundle
+    # lightweight stand-in for shared hub concern wiring
     repoURL: https://stefanprodan.github.io/podinfo
     chart: podinfo
     targetRevision: "6.7.0"
@@ -14,7 +17,8 @@ hubApps:
               - path: /
                 pathType: ImplementationSpecific
   - name: hive
+    # hive is the hub-side app that fans out edge bootstrap + edge workloads
     repoURL: https://github.com/Q29vbA/flavors-machine
     path: hive
-    targetRevision: feat/flavor-bootstrap
+    targetRevision: HEAD
     namespace: argocd

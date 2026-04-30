@@ -1,3 +1,5 @@
+# Edge workloads for this flavor.
+# These entries become Application CRs managed by edge Argo CD Core.
 edgeApps:
   - name: edge-podinfo-primary
     repoURL: https://stefanprodan.github.io/podinfo
@@ -19,8 +21,11 @@ edgeApps:
     targetRevision: "6.7.0"
     namespace: podinfo-secondary
     helm:
-      parameters:
-        - name: "ingress.enabled"
-          value: "true"
-        - name: "ingress.hosts"
-          value: ""
+      values: |
+        ingress:
+          enabled: true
+          hosts:
+            - host: ""
+              paths:
+              - path: /
+                pathType: ImplementationSpecific
