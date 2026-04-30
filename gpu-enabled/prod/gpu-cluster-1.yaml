@@ -1,0 +1,5 @@
+# cluster: gpu-cluster-1
+# env: prod
+# flavor: gpu-enabled
+# Per-cluster Helm value overrides for the hive chart.
+clusterServer: https://gpu-cluster-1.example.com

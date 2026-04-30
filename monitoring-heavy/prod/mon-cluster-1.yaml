@@ -1,0 +1,5 @@
+# cluster: mon-cluster-1
+# env: prod
+# flavor: monitoring-heavy
+# Per-cluster Helm value overrides for the hive chart.
+clusterServer: https://mon-cluster-1.example.com

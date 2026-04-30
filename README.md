@@ -1,14 +1,26 @@
 # flavors-definition
-aka ice cream shop
-## 🚧 Repository Under Construction 🚧
 
-Hey there! 👋 This repo is currently under construction as we work on making our solution public.
+This is a demo repo, lightweight copy of our internal-network project.
+Refer to our [medium post explaining the original project](https://medium.com/@yoavshamia/managing-diverse-large-scale-k8s-clusters-with-a-flavor-based-approach-150934dfb1f3 )
 
-Our flavor-based deployment model is fully built and running in production, but right now, it lives in a private git environment. We’re in the process of adapting and documenting everything for public access - stay tuned!
+this repo is the "what" and "where".
+it says which apps belong to each flavor, and which clusters are in each env.
 
-We need some time to:
-- Clean up internal configurations
-- Remove environment-specific details
-- Write proper documentation
+the structure is simple on purpose:
 
-Thanks for your patience! In the meantime, feel free to check out our blog post for an overview of the architecture.
+```text
+<flavor>/
+    hubApps.yaml
+    edgeApps.yaml
+    <env>/<clustername>.yaml
+```
+
+`hubApps.yaml` is the hub-side list. right now it has two entries only: `ca-bundle` and `hive`.
+
+`edgeApps.yaml` is the edge workload list that `hive` consumes.
+
+`<clustername>.yaml` is for per-cluster overrides, usually `clusterServer`.
+
+## bootstrap reminder
+
+bootstrap from the machine repo
