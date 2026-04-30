@@ -1,14 +1,36 @@
 # flavors-definition
-aka ice cream shop
-## 🚧 Repository Under Construction 🚧
 
-Hey there! 👋 This repo is currently under construction as we work on making our solution public.
+The "what and where" repository. Defines flavors, the clusters that belong to each flavor, and the applications deployed to each.
 
-Our flavor-based deployment model is fully built and running in production, but right now, it lives in a private git environment. We’re in the process of adapting and documenting everything for public access - stay tuned!
+## Directory structure
 
-We need some time to:
-- Clean up internal configurations
-- Remove environment-specific details
-- Write proper documentation
+```
+flavors-definition/
+├── <flavor>/
+│   ├── hubApps.yaml        # Hub-side apps (ca-bundle + hive). Consumed by the hive Helm chart.
+│   ├── edgeApps.yaml       # Edge-side apps. Consumed by the hive Helm chart.
+│   ├── <env>/
+│   │   └── <clustername>.yaml   # Registers a cluster; holds per-cluster value overrides.
+```
 
-Thanks for your patience! In the meantime, feel free to check out our blog post for an overview of the architecture.
+### Example
+
+```
+gpu-enabled/
+├── hubApps.yaml
+├── edgeApps.yaml
+├── prod/
+│   ├── gpu-cluster-1.yaml
+│   └── gpu-cluster-2.yaml
+└── dev/
+    └── gpu-cluster-dev.yaml
+```
+
+## Bootstrap
+
+Apply the root flavorset Application from the machine repo once to seed ArgoCD. After that, all ApplicationSets self-manage:
+
+```bash
+# From the flavors-machine repo root:
+helm template flavorset ./flavorset --values ./flavorset/values.yaml | kubectl apply -n argocd -f -
+```

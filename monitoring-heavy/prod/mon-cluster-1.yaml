@@ -1,0 +1,4 @@
+# cluster: mon-cluster-1
+# env: prod
+# flavor: monitoring-heavy
+# Add per-cluster Helm value overrides here.

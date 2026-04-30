@@ -1,0 +1,11 @@
+edgeApps:
+  - name: edge-podinfo-primary
+    repoURL: https://stefanprodan.github.io/podinfo
+    chart: podinfo
+    targetRevision: "6.7.0"
+    namespace: podinfo-primary
+  - name: edge-podinfo-secondary
+    repoURL: https://stefanprodan.github.io/podinfo
+    chart: podinfo
+    targetRevision: "6.7.0"
+    namespace: podinfo-secondary
