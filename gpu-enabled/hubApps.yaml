@@ -4,6 +4,10 @@ hubApps:
     chart: podinfo
     targetRevision: "6.7.0"
     namespace: ca-bundle
+    helm:
+      parameters:
+        - name: "ingress.enabled"
+          value: "true"
   - name: hive
     repoURL: https://github.com/Q29vbA/flavors-machine
     path: hive

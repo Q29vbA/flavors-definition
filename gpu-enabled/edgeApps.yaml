@@ -4,8 +4,16 @@ edgeApps:
     chart: podinfo
     targetRevision: "6.7.0"
     namespace: podinfo-primary
+    helm:
+      parameters:
+        - name: "ingress.enabled"
+          value: "true"
   - name: edge-podinfo-secondary
     repoURL: https://stefanprodan.github.io/podinfo
     chart: podinfo
     targetRevision: "6.7.0"
     namespace: podinfo-secondary
+    helm:
+      parameters:
+        - name: "ingress.enabled"
+          value: "true"
