@@ -8,6 +8,8 @@ hubApps:
       parameters:
         - name: "ingress.enabled"
           value: "true"
+        - name: "ingress.hosts"
+          value: ""
   - name: hive
     repoURL: https://github.com/Q29vbA/flavors-machine
     path: hive

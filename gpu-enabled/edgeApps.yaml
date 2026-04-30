@@ -8,6 +8,8 @@ edgeApps:
       parameters:
         - name: "ingress.enabled"
           value: "true"
+        - name: "ingress.hosts"
+          value: ""
   - name: edge-podinfo-secondary
     repoURL: https://stefanprodan.github.io/podinfo
     chart: podinfo
@@ -17,3 +19,5 @@ edgeApps:
       parameters:
         - name: "ingress.enabled"
           value: "true"
+        - name: "ingress.hosts"
+          value: ""
