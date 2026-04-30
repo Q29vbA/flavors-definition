@@ -5,7 +5,7 @@ hubApps:
     targetRevision: "6.7.0"
     namespace: ca-bundle
   - name: hive
-    repoURL: https://github.com/my-org/flavors-machine
+    repoURL: https://github.com/Q29vbA/flavors-machine
     path: hive
     targetRevision: feat/flavor-bootstrap
     namespace: argocd
